@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: .
+    container_name: rails_app
+    command: /bin/bash -c "rm -f /tmp/server.pid && bundle exec rails server -b 0.0.0.0 -P /tmp/server.pid"
+    # env_file: .env
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/rails-app
+      - rails-rspec-capybara-bundle-cache:/bundle
+    tty: true
+
+  redis:
+    image: "redis:7-alpine"
+    container_name: redis_server
+    ports:
+      - 6379
+    volumes:
+      - rails-rspec-capybara-redis:/var/lib/redis/data
+    tty: false
+
+
+  db:
+    image: postgres:15.2-alpine
+    container_name: app_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
+    volumes:
+      - rails-rspec-capybara-postgres:/var/lib/postgresql/data
+    tty: false
+
+volumes:
+  rails-rspec-capybara-redis:
+  rails-rspec-capybara-postgres:
+  rails-rspec-capybara-bundle-cache:
