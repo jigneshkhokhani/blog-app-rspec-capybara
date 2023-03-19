@@ -1,24 +1,10 @@
-# README
+# Udemy course reference
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Ruby on Rails 5 - BDD, RSpec and Capybara](https://www.udemy.com/course/ruby-rails-5-bdd-rspec-capybara)
 
-Things you may want to cover:
+# How to run the project
+Run below command from terminal to up all services from `docker-compose` file.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```ruby
+docker-compose up
+```
