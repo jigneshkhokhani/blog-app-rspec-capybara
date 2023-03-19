@@ -69,3 +69,6 @@ group :development do
   # gem "spring"
 end
 
+gem 'bootstrap', '~> 5.2.2'
+gem 'jquery-rails'
+
