@@ -67,8 +67,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem 'guard-rspec', require: false
 end
 
 gem 'bootstrap', '~> 5.2.2'
 gem 'jquery-rails'
-
