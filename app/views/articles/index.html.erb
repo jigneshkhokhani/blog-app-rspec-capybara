@@ -10,6 +10,9 @@
           <%= link_to article.title, article_path(article) %>
         </h5>
         <p class="card-text text-truncate"><%= article.body %></p>
+        <p class="card-text">
+          <small class="text-muted">Created by: <%= article.user.email %></small>
+        </p>
       </div>
     </div>
   <% end %>
