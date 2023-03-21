@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Editign an article' do
-  let(:user) { User.create(email: 'user1@example.com', password: 'password') }
+  let(:user1) { User.create(email: 'user1@example.com', password: 'password') }
   before do
-    login_as(user)
+    login_as(user1)
   end
-  let!(:article) { Article.create(title: 'Title one', body: 'Body of article one', user: user) }
+  let!(:article) { Article.create(title: 'Title one', body: 'Body of article one', user: user1) }
 
   scenario 'A user update an article' do
     visit '/'
