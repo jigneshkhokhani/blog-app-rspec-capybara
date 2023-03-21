@@ -75,3 +75,5 @@ gem 'bootstrap', '~> 5.2.2'
 gem 'jquery-rails'
 
 gem "font-awesome-rails"
+
+gem 'devise'
