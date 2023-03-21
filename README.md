@@ -9,7 +9,7 @@ Run below command from terminal to up all services from `docker-compose` file.
 docker-compose up
 ```
 
-# How to rspec automatically
+# How to run `rspec` automatically
 Run below command from terminal to watch changes and run specs.
 
 ```ruby
