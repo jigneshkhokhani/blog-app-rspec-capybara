@@ -8,8 +8,9 @@ RSpec.feature 'Listing Articles' do
   # end
 
   # 2nd way to run before scenario
-  let!(:article1) { Article.create(title: 'The first article', body: '1st lLorem ipsum dolor sit amet, consectetur adip') }
-  let!(:article2) { Article.create(title: 'The second article', body: '2nd lLorem ipsum dolor sit amet, consectetur adip') }
+  let(:user1) { User.create(email: 'user1@example.com', password: 'password') }
+  let!(:article1) { Article.create(title: 'The first article', body: '1st lLorem ipsum dolor sit amet, consectetur adip', user: user1) }
+  let!(:article2) { Article.create(title: 'The second article', body: '2nd lLorem ipsum dolor sit amet, consectetur adip', user: user1) }
 
   scenario 'A user lists all articles' do
     # Call to create article in test DB because `let` is lazy loaded.
