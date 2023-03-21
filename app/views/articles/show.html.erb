@@ -1,17 +1,20 @@
-<article class='mb-4'>
-  <h1 class='article-detail-title'>
-    <%= @article.title %>
-  </h1>
+<article class='card mt-4'>
+  <div class="card-body">
+    <h1 class='card-title'>
+      <%= @article.title %>
+    </h1>
 
-  <div class='text-muted mb-2' id='article-date'>
-    <!-- <i class="fa-regular fa-calendar"></i> -->
-    <%= fa_icon "calendar" %>
-    <%= @article.created_at.strftime('%b %d %Y') %>
+    <h6 class="card-subtitle mb-2 text-muted">
+      <!-- <i class="fa-regular fa-calendar"></i> -->
+      <%= fa_icon "calendar" %>
+      <%= @article.created_at.strftime('%b %d %Y') %>
+    </h6>
+
+    <div class='card-text'>
+      <%= @article.body %>
+    </div>
+
+    <%= link_to 'Edit Article', edit_article_path(@article), class: 'btn btn-primary btn-lg m-3' %>
+    <%= link_to 'Delete Article', article_path(@article), data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure you want to delete article?' }, class: 'btn btn-danger btn-lg m-3' %>
   </div>
-
-  <div class='article-body'>
-    <%= @article.body %>
-  </div>
-
-  <%= link_to 'Edit Article', edit_article_path(@article), class: 'btn btn-primary btn-lg btn-space' %>
 </article>
