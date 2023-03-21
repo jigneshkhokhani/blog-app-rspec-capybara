@@ -8,13 +8,14 @@ RSpec.feature 'Listing Articles' do
   # end
 
   # 2nd way to run before scenario
-  let(:article1) { Article.create(title: 'The first article', body: '1st lLorem ipsum dolor sit amet, consectetur adip') }
-  let(:article2) { Article.create(title: 'The second article', body: '2nd lLorem ipsum dolor sit amet, consectetur adip') }
+  let!(:article1) { Article.create(title: 'The first article', body: '1st lLorem ipsum dolor sit amet, consectetur adip') }
+  let!(:article2) { Article.create(title: 'The second article', body: '2nd lLorem ipsum dolor sit amet, consectetur adip') }
 
   scenario 'A user lists all articles' do
-    # Call to create article in test DB because `let` is lazy loaded
-    article1
-    article2
+    # Call to create article in test DB because `let` is lazy loaded.
+    # or use let! instead
+    # article1
+    # article2
 
     visit '/'
 
@@ -37,6 +38,8 @@ RSpec.feature 'Listing Articles' do
   end
 
   scenario 'A user has no articles' do
+    Article.delete_all
+
     visit '/'
 
     expect(page).not_to have_content(article1.title)
