@@ -8,3 +8,10 @@ Run below command from terminal to up all services from `docker-compose` file.
 ```ruby
 docker-compose up
 ```
+
+# How to rspec automatically
+Run below command from terminal to watch changes and run specs.
+
+```ruby
+bin/guard
+```
