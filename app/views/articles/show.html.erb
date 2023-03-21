@@ -1,0 +1,15 @@
+<article class='mb-4'>
+  <h1 class='article-detail-title'>
+    <%= @article.title %>
+  </h1>
+
+  <div class='text-muted mb-2' id='article-date'>
+    <!-- <i class="fa-regular fa-calendar"></i> -->
+    <%= fa_icon "calendar" %>
+    <%= @article.created_at.strftime('%b %d %Y') %>
+  </div>
+
+  <div class='article-body'>
+    <%= @article.body %>
+  </div>
+</article>
