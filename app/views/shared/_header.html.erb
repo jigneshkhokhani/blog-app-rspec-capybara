@@ -9,7 +9,11 @@
         <li class="nav-item">
           <%= link_to 'Author', '#', class: 'nav-link active' %>
         </li>
-        <% unless user_signed_in? %>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'Sign out', destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete } %>
+          </li>
+        <% else %>
           <li class="nav-item">
             <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
           </li>
@@ -20,9 +24,6 @@
         <% if user_signed_in? %>
           <p class='navbar-text'>Signed in as <%= current_user.email %></p>
         <% end %>
-        <li class="nav-item">
-          <%= link_to 'Signout', destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete } %>
-        </li>
       </ul>
     </div>
   </div>

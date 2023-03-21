@@ -18,6 +18,6 @@ RSpec.feature 'Users Signin' do
     expect(page).not_to have_link('Sign up')
   end
 
-  scenario 'with invalid credentials' do
-  end
+  # scenario 'with invalid credentials' do
+  # end
 end
