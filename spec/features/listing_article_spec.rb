@@ -12,6 +12,21 @@ RSpec.feature 'Listing Articles' do
   let!(:article1) { Article.create(title: 'The first article', body: '1st lLorem ipsum dolor sit amet, consectetur adip', user: user1) }
   let!(:article2) { Article.create(title: 'The second article', body: '2nd lLorem ipsum dolor sit amet, consectetur adip', user: user1) }
 
+  scenario 'with articles created and user not signed in' do
+
+    visit '/'
+
+    expect(page).to have_content(article1.title)
+    expect(page).to have_content(article1.body)
+    expect(page).to have_content(article2.title)
+    expect(page).to have_content(article2.body)
+
+    expect(page).to have_link(article1.title)
+    expect(page).to have_link(article2.title)
+
+    expect(page).not_to have_link('New Article')
+  end
+
   scenario 'A user lists all articles' do
     # Call to create article in test DB because `let` is lazy loaded.
     # or use let! instead
