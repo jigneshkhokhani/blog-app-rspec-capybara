@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
+      ActionCable.server.broadcast('comments_channel', render_comment(@comment))
       flash[:notice] = 'Comment has been created'
     else
       flash.now[:alert] = 'Comment has not been created'
@@ -22,5 +23,9 @@ class CommentsController < ApplicationController
 
   def set_article
     @article = Article.find(params[:article_id])
+  end
+
+  def render_comment(comment)
+    CommentsController.render(partial: 'comments/comment', object: comment)
   end
 end
