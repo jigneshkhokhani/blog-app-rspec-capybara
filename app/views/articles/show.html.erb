@@ -25,7 +25,7 @@
 
 <div class='col-md-12'>
   <!-- form start -->
-  <%= form_with model: [@article, @comment], html: { class: 'form-horizontal', role: 'form' } do |f| %>
+  <%= form_with model: [@article, @comment], html: { class: 'form-horizontal', role: 'form' }, remote: true do |f| %>
     <!-- error IF start -->
     <% if @comment.errors.any? %>
       <div class="card text-bg-danger">
@@ -77,17 +77,19 @@
   <div class='col-md-10'>
     <!-- comment listing start -->
     <% if @article.comments.any? %>
-      <% persisted_comments(@comments).each do |comment| %>
-        <div class='comment-body'>
-          <%= comment.body %>
-        </div>
+      <div id='messages'>
+        <% persisted_comments(@comments).each do |comment| %>
+          <div class='comment-body'>
+            <%= comment.body %>
+          </div>
 
-        <div class='commet-time'>
-          <%= time_ago_in_words(comment.created_at) %>
-          ago by <%= comment.user.email %>
-        </div>
-        <hr>
-      <% end %>
+          <div class='commet-time'>
+            <%= time_ago_in_words(comment.created_at) %>
+            ago by <%= comment.user.email %>
+          </div>
+          <hr>
+        <% end %>
+      </div>
     <% else %>
       There are no comments to show.
     <% end %>

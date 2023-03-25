@@ -1,5 +1,6 @@
 development:
-  adapter: async
+  adapter: redis
+  url: redis://redis:6379/1 # docker container service name as host name
 
 test:
   adapter: test

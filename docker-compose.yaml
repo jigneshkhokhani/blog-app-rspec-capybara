@@ -23,7 +23,7 @@ services:
     image: "redis:7-alpine"
     container_name: redis_server
     ports:
-      - 6379
+      - 6379:6379
     volumes:
       - rails-rspec-capybara-redis:/var/lib/redis/data
     tty: false
